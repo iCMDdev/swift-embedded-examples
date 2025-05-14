@@ -6,13 +6,16 @@
       "-Xfrontend", "-function-sections",
       "-enable-experimental-feature", "Embedded",
       "-Xfrontend", "-mergeable-symbols",
-      "-Xclang-linker", "-fuse-ld=lld",
       "-Xclang-linker", "-nostdlib"
     ]
   },
   "linker": {
     "extraCLIOptions": [
       "-T", "Sources/Support/linkerscript.ld",
+      "-e", "_start",
+      "-no_zero_fill_sections",
+      "-segalign", "4",
+      "-segaddr", "__TEXT", "0x80000",
       "--unresolved-symbols=ignore-in-object-files"
     ]
   }
