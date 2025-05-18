@@ -2,7 +2,7 @@ name: Raspberry Pi Baremetal
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "RPi-4B-BCM2711"]
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
   workflow_dispatch:
@@ -30,3 +30,11 @@ jobs:
       - name: Build ${{ matrix.example }}
         working-directory: ${{ matrix.example }}
         run: make
+
+      - name: Upload build files artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.example }}-binary
+          path: |
+            ${{ matrix.example }}/kernel8*
+          retention-days: 30
