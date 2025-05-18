@@ -2,7 +2,7 @@ name: Raspberry Pi Baremetal
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "RPi-4B-BCM2711"]
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
 
