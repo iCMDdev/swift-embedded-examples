@@ -14,6 +14,6 @@ SECTIONS
     }
     _end = .;
 
-   /DISCARD/ : { *(.comment) *(.gnu*) *(.note*) *(.eh_frame*) }
+   /DISCARD/ : { *(.comment) *(.gnu*) *(.note*) *(.eh_frame*) *(.swift_modhash) }
 }
 __bss_size = (__bss_end - __bss_start)>>3;
