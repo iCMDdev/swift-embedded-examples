@@ -16,7 +16,7 @@ kernel8.img: kernel8.elf
 
 kernel8.elf: $(BUILDROOT)/libMainApp.a $(BUILDROOT)/Support.build/boot.S.o link.ld
 	@echo "🔗 Linking with clang..."
-	$(CLANG) --target=aarch64-elf -o kernel8.elf $< $^ -fuse-ld=lld -nostdlib -Wl,--unresolved-symbols=ignore-in-object-files -Wl,-T ./link.ld
+	$(CLANG) -c release --target=aarch64-elf -o kernel8.elf $< $^ -fuse-ld=lld -nostdlib -Wl,--unresolved-symbols=ignore-in-object-files -Wl,-T ./link.ld
 	@echo ""
 
 $(BUILDROOT)/libMainApp.a $(BUILDROOT)/Support.build/boot.S.o: 
