@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install apt dependencies
         run: sudo apt-get -qq update && sudo apt-get -qq -y install curl
@@ -28,8 +28,9 @@ jobs:
 
   soundness:
     name: Soundness
-    uses: swiftlang/github-workflows/.github/workflows/soundness.yml@main
+    uses: swiftlang/github-workflows/.github/workflows/soundness.yml@0.0.12
     with:
+      docs_check_targets: "EmbeddedSwift"
       api_breakage_check_enabled: false  # this repo doesn't vend any API
       license_header_check_enabled: false  # feature: https://github.com/swiftlang/github-workflows/issues/78
       license_header_check_project_name: "Swift.org"  # bug: https://github.com/swiftlang/github-workflows/issues/76
